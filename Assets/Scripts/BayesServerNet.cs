@@ -1,6 +1,9 @@
 ﻿using UnityEngine;
 using BayesServer;
 using BayesServer.Inference.RelevanceTree;
+using Newtonsoft.Json;
+using System;
+using System.IO;
 
 public class BayesServerNet : MonoBehaviour
 {
@@ -14,6 +17,9 @@ public class BayesServerNet : MonoBehaviour
     public void InitializeNetwork()
     {
         Debug.Log("making network");
+        string filePath = Path.Combine(Application.streamingAssetsPath, "Network.json");
+        // var vec = JsonConvert.DeserializeObject<Vector2>("{'x':1.0,'y':0.0}");
+        // Debug.Log(filePath);
     }
 
 }
