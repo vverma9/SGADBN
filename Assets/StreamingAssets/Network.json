@@ -1,3 +1,39 @@
 {
-	
+  "Root": "Blood Transfusion",
+  "Competencies": [
+    {
+      "id": "C1",
+      "name": "Quality"
+    },
+    {
+      "id": "C2",
+      "name": "Legal Knowledge"
+    },
+    {
+      "id": "C3",
+      "name": "Communication"
+    }
+  ],
+  "Evidences": [
+    {
+      "id": "E1",
+      "parent": "C1",
+      "name": "Check patients's wrist tag"
+    },
+    {
+      "id": "E2",
+      "parent": "C2",
+      "name": "Collect Blood specimen"
+    },
+    {
+      "id": "E3",
+      "parent": "C2",
+      "name": "GXM Form"
+    },
+    {
+      "id": "E4",
+      "parent": "C3",
+      "name": "Speak to Patient: Verify patient DOB"
+    }
+  ]
 }
