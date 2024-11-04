@@ -18,8 +18,8 @@ public class BayesServerNet : MonoBehaviour
     {
         Debug.Log("making network");
         string filePath = Path.Combine(Application.streamingAssetsPath, "Network.json");
-        // var vec = JsonConvert.DeserializeObject<Vector2>("{'x':1.0,'y':0.0}");
-        // Debug.Log(filePath);
+        NetworkJSON networkData = JsonConvert.DeserializeObject<NetworkJSON>(File.ReadAllText(filePath));
+        // Debug.Log(networkData.evidences[0].name);
     }
 
 }
