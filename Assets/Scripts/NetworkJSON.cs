@@ -8,12 +8,12 @@ public class NetworkJSON
     {
         public string id;
         public string name;
+        public List<Evidence> evidences;
     }
 
     public class Evidence
     {
         public string id;
-        public string parent;
         public string name;
     }
 
@@ -24,5 +24,4 @@ public class NetworkJSON
 
     public Root root;
     public List<Competency> competencies;
-    public List<Evidence> evidences;
 }
