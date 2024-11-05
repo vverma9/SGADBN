@@ -50,6 +50,7 @@ public class BayesServerNet : MonoBehaviour
             TemporalType = TemporalType.Temporal // this is a time series node, hence re-used for each time slice
         };
         beliefNet.Nodes.Add(rootNode); // Add root node to the network
+        beliefNet.Links.Add(new Link(rootNode, rootNode, 1)); // time series link with an order/lag 1
 
         // add competency nodes
         cNum = networkData.competencies.Count;
@@ -99,7 +100,30 @@ public class BayesServerNet : MonoBehaviour
         }
 
         //Debug.Log(Application.persistentDataPath);
+        InitializeNetworkDistribution();
         beliefNet.Save(Application.persistentDataPath + "/temp.bayes"); // doesn't save the state of evidences
     }
+    public void InitializeNetworkDistribution()
+    {
+        // Probability distribution for root node at t=0
+        StateContext rTrueContext = new StateContext(Rtrue, 0);
+        StateContext rFalseContext = new StateContext(RFalse, 0);
+        Table rootProb = rootNode.NewDistribution(0).Table;
+        rootProb[rTrueContext] = 0;
+        rootProb[rFalseContext] = 1;
+        rootNode.Distribution = rootProb;
 
+        // Probability distribution for root node at t=1
+        // when specifying temporal distributions, variables which belong to temporal nodes must have times associated
+        // NOTE: Each time is specified relative to the current point in time which is defined as zero,
+        // therefore the time for variables at the previous time step is -1
+        StateContext rTrueTransitionContext = new StateContext(Rtrue, -1);
+        StateContext rFalseTransitionContext = new StateContext(RFalse, -1);
+        Table rootTransitionProb = rootNode.NewDistribution(1).Table;
+        rootTransitionProb[rTrueContext, rTrueTransitionContext] = 1; // Knowledge learned will stay with you and can't be unlearned
+        rootTransitionProb[rFalseContext, rTrueTransitionContext] = 0; // knowledge gained can't be unlearned
+        rootTransitionProb[rTrueContext, rFalseTransitionContext] = 0.6; // Learn rate or transition rate
+        rootTransitionProb[rFalseContext, rFalseTransitionContext] = 0.4;
+        rootNode.Distributions[1] = rootTransitionProb;
+    }
 }
