@@ -8,6 +8,8 @@ public class NetworkJSON
     {
         public int id;
         public string name;
+        public double guessRate;
+        public double slipRate;
     }
 
     public class Evidence
@@ -15,11 +17,14 @@ public class NetworkJSON
         public int id;
         public string name;
         public int parent;
+        public double guessRate;
+        public double slipRate;
     }
 
     public class Root
     {
         public string name;
+        public double transitionRate;
     }
 
     public Root root;

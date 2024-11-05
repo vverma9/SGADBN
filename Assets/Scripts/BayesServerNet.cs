@@ -75,7 +75,6 @@ public class BayesServerNet : MonoBehaviour
         }
 
         eNum = networkData.evidences.Count;
-        Debug.Log(eNum);
         eTrue = new State[eNum];
         eFalse = new State[eNum];
         evidences = new Variable[eNum];
@@ -118,8 +117,8 @@ public class BayesServerNet : MonoBehaviour
         Table rootTransitionProb = rootNode.NewDistribution(1).Table;
         rootTransitionProb[rTrueContext, rTrueTransitionContext] = 1; // Knowledge learned will stay with you and can't be unlearned
         rootTransitionProb[rFalseContext, rTrueTransitionContext] = 0; // knowledge gained can't be unlearned
-        rootTransitionProb[rTrueContext, rFalseTransitionContext] = 0.6; // Learn rate or transition rate
-        rootTransitionProb[rFalseContext, rFalseTransitionContext] = 0.4;
+        rootTransitionProb[rTrueContext, rFalseTransitionContext] = networkData.root.transitionRate; // Learn rate or transition rate
+        rootTransitionProb[rFalseContext, rFalseTransitionContext] = 1 - networkData.root.transitionRate;
         rootNode.Distributions[1] = rootTransitionProb;
 
         // CPT for Competency nodes
@@ -127,13 +126,14 @@ public class BayesServerNet : MonoBehaviour
         Table cProb;
         for (int i = 0; i < cNum; i++)
         {
+            NetworkJSON.Competency c = networkData.competencies[i];
             cTrueContext = new StateContext(cTrue[i], 0);
             cFalseContext = new StateContext(cFalse[i], 0);
             cProb = competencyNodes[i].NewDistribution(0).Table;
-            cProb[rTrueContext, cTrueContext] = 0.95;
-            cProb[rTrueContext, cFalseContext] = 0.05;
-            cProb[rFalseContext, cTrueContext] = 0.1;
-            cProb[rFalseContext, cFalseContext] = 0.9;
+            cProb[rTrueContext, cTrueContext] = 1 - c.slipRate;
+            cProb[rTrueContext, cFalseContext] = c.slipRate;
+            cProb[rFalseContext, cTrueContext] = c.guessRate;
+            cProb[rFalseContext, cFalseContext] = 1 - c.guessRate;
             competencyNodes[i].Distribution = cProb;
             eNum = networkData.evidences.Count;
         }
@@ -143,15 +143,16 @@ public class BayesServerNet : MonoBehaviour
         Table eProb;
         for (int i = 0; i < eNum; i++)
         {
-            cTrueContext = new StateContext(cTrue[networkData.evidences[i].parent], 0);
-            cFalseContext = new StateContext(cFalse[networkData.evidences[i].parent], 0);
+            NetworkJSON.Evidence e = networkData.evidences[i];
+            cTrueContext = new StateContext(cTrue[e.parent], 0);
+            cFalseContext = new StateContext(cFalse[e.parent], 0);
             eTrueContext = new StateContext(eTrue[i], 0);
             eFalseContext = new StateContext(eFalse[i], 0);
             eProb = evidenceNodes[i].NewDistribution(0).Table;
-            eProb[cTrueContext, eTrueContext] = 0.9;
-            eProb[cTrueContext, eFalseContext] = 0.1;
-            eProb[cFalseContext, eTrueContext] = 0.15;
-            eProb[cFalseContext, eFalseContext] = 0.85;
+            eProb[cTrueContext, eTrueContext] = 1 - e.slipRate;
+            eProb[cTrueContext, eFalseContext] = e.slipRate;
+            eProb[cFalseContext, eTrueContext] = e.guessRate;
+            eProb[cFalseContext, eFalseContext] = 1 - e.guessRate;
             evidenceNodes[i].Distribution = eProb;
         }
 

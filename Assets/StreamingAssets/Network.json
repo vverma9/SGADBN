@@ -1,40 +1,55 @@
 {
   "Root": {
-    "name": "Blood Transfusion"
+    "name": "Blood Transfusion",
+    "transitionRate": 0.4
   },
   "Competencies": [
     {
       "id": 0,
-      "name": "Quality"
+      "name": "Quality",
+      "guessRate": 0.1,
+      "slipRate": 0.05
     },
     {
       "id": 1,
-      "name": "Legal Knowledge"
+      "name": "Legal Knowledge",
+      "guessRate": 0.11,
+      "slipRate": 0.04
     },
     {
       "id": 2,
-      "name": "Communication"
+      "name": "Communication",
+      "guessRate": 0.2,
+      "slipRate": 0.1
     }
   ],
   "Evidences": [
     {
       "id": 0,
       "name": "Check patients's wrist tag",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
       "parent": 0
     },
     {
       "id": 1,
       "name": "Collect Blood specimen",
+      "guessRate": 0.21,
+      "slipRate": 0.45,
       "parent": 1
     },
     {
       "id": 2,
       "name": "GXM Form",
+      "guessRate": 0.17,
+      "slipRate": 0.2,
       "parent": 1
     },
     {
       "id": 3,
       "name": "Speak to Patient: Verify patient DOB",
+      "guessRate": 0.23,
+      "slipRate": 0.21,
       "parent": 2
     }
   ]
