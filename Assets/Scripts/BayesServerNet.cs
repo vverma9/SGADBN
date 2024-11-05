@@ -105,7 +105,7 @@ public class BayesServerNet : MonoBehaviour
     }
     public void InitializeNetworkDistribution()
     {
-        // Probability distribution for root node at t=0
+        // Probability distribution (Conditional Probability Tables, CPT) for root node at t=0
         StateContext rTrueContext = new StateContext(Rtrue, 0);
         StateContext rFalseContext = new StateContext(RFalse, 0);
         Table rootProb = rootNode.NewDistribution(0).Table;
@@ -113,7 +113,7 @@ public class BayesServerNet : MonoBehaviour
         rootProb[rFalseContext] = 1;
         rootNode.Distribution = rootProb;
 
-        // Probability distribution for root node at t=1
+        // CPT for root node at t=1
         // when specifying temporal distributions, variables which belong to temporal nodes must have times associated
         // NOTE: Each time is specified relative to the current point in time which is defined as zero,
         // therefore the time for variables at the previous time step is -1
@@ -125,5 +125,7 @@ public class BayesServerNet : MonoBehaviour
         rootTransitionProb[rTrueContext, rFalseTransitionContext] = 0.6; // Learn rate or transition rate
         rootTransitionProb[rFalseContext, rFalseTransitionContext] = 0.4;
         rootNode.Distributions[1] = rootTransitionProb;
+
+        // CPT for Competency and Evidence nodes
     }
 }
