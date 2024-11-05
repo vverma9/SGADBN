@@ -1,42 +1,41 @@
 {
-  "TotalEvicenceCount": 4,
   "Root": {
     "name": "Blood Transfusion"
   },
   "Competencies": [
     {
-      "id": "C1",
-      "name": "Quality",
-      "evidences": [
-        {
-          "id": "E1",
-          "name": "Check patients's wrist tag"
-        }
-      ]
+      "id": 0,
+      "name": "Quality"
     },
     {
-      "id": "C2",
-      "name": "Legal Knowledge",
-      "evidences": [
-        {
-          "id": "E2",
-          "name": "Collect Blood specimen"
-        },
-        {
-          "id": "E3",
-          "name": "GXM Form"
-        }
-      ]
+      "id": 1,
+      "name": "Legal Knowledge"
     },
     {
-      "id": "C3",
-      "name": "Communication",
-      "evidences": [
-        {
-          "id": "E4",
-          "name": "Speak to Patient: Verify patient DOB"
-        }
-      ]
+      "id": 2,
+      "name": "Communication"
+    }
+  ],
+  "Evidences": [
+    {
+      "id": 0,
+      "name": "Check patients's wrist tag",
+      "parent": 0
+    },
+    {
+      "id": 1,
+      "name": "Collect Blood specimen",
+      "parent": 1
+    },
+    {
+      "id": 2,
+      "name": "GXM Form",
+      "parent": 1
+    },
+    {
+      "id": 3,
+      "name": "Speak to Patient: Verify patient DOB",
+      "parent": 2
     }
   ]
 }

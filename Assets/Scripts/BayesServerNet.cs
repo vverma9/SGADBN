@@ -58,15 +58,7 @@ public class BayesServerNet : MonoBehaviour
         cFalse = new State[cNum];
         competencies = new Variable[cNum];
         competencyNodes = new Node[cNum];
-        int totalEvicenceCount = 0; // sets the total number of evidence in network
-        for (int i = 0; i < cNum; i++)
-        {
-            totalEvicenceCount += networkData.competencies[i].evidences.Count;
-        }
-        eTrue = new State[totalEvicenceCount];
-        eFalse = new State[totalEvicenceCount];
-        evidences = new Variable[totalEvicenceCount];
-        evidenceNodes = new Node[totalEvicenceCount];
+
         // iterate over all the competencies, create their nodes, add them to network and links them to root node
         for (int i=0; i< cNum; i++)
         {
@@ -80,23 +72,27 @@ public class BayesServerNet : MonoBehaviour
             };
             beliefNet.Nodes.Add(competencyNodes[i]);
             beliefNet.Links.Add(new Link(rootNode, competencyNodes[i], 0));
+        }
 
-            // add evidence child nodes
-            // iterate over all the child evidences, create their nodes, add them to network and links them to their parent competency node
-            eNum = c.evidences.Count;
-            for(int j=0; j < eNum; j++)
+        eNum = networkData.evidences.Count;
+        Debug.Log(eNum);
+        eTrue = new State[eNum];
+        eFalse = new State[eNum];
+        evidences = new Variable[eNum];
+        evidenceNodes = new Node[eNum];
+        // iterate over all the evidences, create their nodes, add them to network and links them to their parent competency node
+        for (int i = 0; i < eNum; i++)
+        {
+            NetworkJSON.Evidence e = networkData.evidences[i];
+            eTrue[i] = new State("True");
+            eFalse[i] = new State("False");
+            evidences[i] = new Variable(e.name, eTrue[i], eFalse[i]);
+            evidenceNodes[i] = new Node(evidences[i])
             {
-                NetworkJSON.Evidence e = c.evidences[j];
-                eTrue[i + j] = new State("True");
-                eFalse[i + j] = new State("False");
-                evidences[i + j] = new Variable(e.name, eTrue[i + j], eFalse[i + j]);
-                evidenceNodes[i + j] = new Node(evidences[i + j])
-                {
-                    TemporalType = TemporalType.Temporal // this is a time series node, hence re-used for each time slice
-                };
-                beliefNet.Nodes.Add(evidenceNodes[i + j]);
-                beliefNet.Links.Add(new Link(competencyNodes[i], evidenceNodes[i + j], 0));
-            }
+                TemporalType = TemporalType.Temporal // this is a time series node, hence re-used for each time slice
+            };
+            beliefNet.Nodes.Add(evidenceNodes[i]);
+            beliefNet.Links.Add(new Link(competencyNodes[e.parent], evidenceNodes[i], 0));
         }
 
         //Debug.Log(Application.persistentDataPath);
@@ -126,6 +122,38 @@ public class BayesServerNet : MonoBehaviour
         rootTransitionProb[rFalseContext, rFalseTransitionContext] = 0.4;
         rootNode.Distributions[1] = rootTransitionProb;
 
-        // CPT for Competency and Evidence nodes
+        // CPT for Competency nodes
+        StateContext cTrueContext, cFalseContext;
+        Table cProb;
+        for (int i = 0; i < cNum; i++)
+        {
+            cTrueContext = new StateContext(cTrue[i], 0);
+            cFalseContext = new StateContext(cFalse[i], 0);
+            cProb = competencyNodes[i].NewDistribution(0).Table;
+            cProb[rTrueContext, cTrueContext] = 0.95;
+            cProb[rTrueContext, cFalseContext] = 0.05;
+            cProb[rFalseContext, cTrueContext] = 0.1;
+            cProb[rFalseContext, cFalseContext] = 0.9;
+            competencyNodes[i].Distribution = cProb;
+            eNum = networkData.evidences.Count;
+        }
+
+        // CPT for Evidence nodes
+        StateContext eTrueContext, eFalseContext;
+        Table eProb;
+        for (int i = 0; i < eNum; i++)
+        {
+            cTrueContext = new StateContext(cTrue[networkData.evidences[i].parent], 0);
+            cFalseContext = new StateContext(cFalse[networkData.evidences[i].parent], 0);
+            eTrueContext = new StateContext(eTrue[i], 0);
+            eFalseContext = new StateContext(eFalse[i], 0);
+            eProb = evidenceNodes[i].NewDistribution(0).Table;
+            eProb[cTrueContext, eTrueContext] = 0.9;
+            eProb[cTrueContext, eFalseContext] = 0.1;
+            eProb[cFalseContext, eTrueContext] = 0.15;
+            eProb[cFalseContext, eFalseContext] = 0.85;
+            evidenceNodes[i].Distribution = eProb;
+        }
+
     }
 }

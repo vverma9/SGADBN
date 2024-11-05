@@ -6,15 +6,15 @@ public class NetworkJSON
     // Never use getter and setter otherwise Unity won't be able to serialize it
     public class Competency
     {
-        public string id;
+        public int id;
         public string name;
-        public List<Evidence> evidences;
     }
 
     public class Evidence
     {
-        public string id;
+        public int id;
         public string name;
+        public int parent;
     }
 
     public class Root
@@ -24,5 +24,5 @@ public class NetworkJSON
 
     public Root root;
     public List<Competency> competencies;
-    public int totalEvicenceCount;
+    public List<Evidence> evidences;
 }
