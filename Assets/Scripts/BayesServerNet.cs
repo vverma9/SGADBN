@@ -6,22 +6,28 @@ using System.IO;
 
 public class BayesServerNet : MonoBehaviour
 {
-    NetworkJSON networkData;
-    BayesServer.Network beliefNet;
+    NetworkJSON networkData; // read from json file
+    BayesServer.Network beliefNet; // variable that holds the entire DBN
+    // Variables for L1 (root) node
     Node rootNode;
     Variable root;
     State Rtrue;
     State RFalse;
+
+    // Variables for L2 (competency) nodes
     int cNum;
     Node[] competencyNodes;
     Variable[] competencies;
     State[] cTrue;
     State[] cFalse;
+
+    // Variables for L3 (evidence) nodes
     int eNum;
     Node[] evidenceNodes;
     Variable[] evidences;
     State[] eTrue;
     State[] eFalse;
+
     // Use this for initialization
     void Awake()
     {
@@ -33,30 +39,34 @@ public class BayesServerNet : MonoBehaviour
         //Debug.Log("making network");
         string filePath = Path.Combine(Application.streamingAssetsPath, "Network.json");
         networkData = JsonConvert.DeserializeObject<NetworkJSON>(File.ReadAllText(filePath));
-        cNum = networkData.competencies.Count;
-        //Debug.Log(networkData.competencies.Count);
         beliefNet = new BayesServer.Network();
 
         // add a root node (blood transfusion knowledge) which is a latent variable (parameter to be learned from observed values)
-        Rtrue = new State("True");
-        RFalse = new State("False");
-        root = new Variable(networkData.root.name, Rtrue, RFalse);
-        rootNode = new Node(root)
+        Rtrue = new State("True"); // Holds state for root node
+        RFalse = new State("False"); // Holds state for root node
+        root = new Variable(networkData.root.name, Rtrue, RFalse); // Creates root node variable that can have 2 states
+        rootNode = new Node(root) // Created root node
         {
             TemporalType = TemporalType.Temporal // this is a time series node, hence re-used for each time slice
         };
-        beliefNet.Nodes.Add(rootNode);
+        beliefNet.Nodes.Add(rootNode); // Add root node to the network
 
         // add competency nodes
+        cNum = networkData.competencies.Count;
         cTrue = new State[cNum];
         cFalse = new State[cNum];
         competencies = new Variable[cNum];
         competencyNodes = new Node[cNum];
-        int totalEvicenceCount = networkData.totalEvicenceCount; // ideally should be calculated instead of hard coding
+        int totalEvicenceCount = 0; // sets the total number of evidence in network
+        for (int i = 0; i < cNum; i++)
+        {
+            totalEvicenceCount += networkData.competencies[i].evidences.Count;
+        }
         eTrue = new State[totalEvicenceCount];
         eFalse = new State[totalEvicenceCount];
         evidences = new Variable[totalEvicenceCount];
         evidenceNodes = new Node[totalEvicenceCount];
+        // iterate over all the competencies, create their nodes, add them to network and links them to root node
         for (int i=0; i< cNum; i++)
         {
             NetworkJSON.Competency c = networkData.competencies[i];
@@ -71,6 +81,7 @@ public class BayesServerNet : MonoBehaviour
             beliefNet.Links.Add(new Link(rootNode, competencyNodes[i], 0));
 
             // add evidence child nodes
+            // iterate over all the child evidences, create their nodes, add them to network and links them to their parent competency node
             eNum = c.evidences.Count;
             for(int j=0; j < eNum; j++)
             {
