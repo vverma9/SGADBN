@@ -24,4 +24,5 @@ public class NetworkJSON
 
     public Root root;
     public List<Competency> competencies;
+    public int totalEvicenceCount;
 }

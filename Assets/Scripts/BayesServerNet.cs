@@ -34,7 +34,6 @@ public class BayesServerNet : MonoBehaviour
         string filePath = Path.Combine(Application.streamingAssetsPath, "Network.json");
         networkData = JsonConvert.DeserializeObject<NetworkJSON>(File.ReadAllText(filePath));
         cNum = networkData.competencies.Count;
-        eNum = networkData.evidences.Count;
         //Debug.Log(networkData.competencies.Count);
         beliefNet = new BayesServer.Network();
 
@@ -53,6 +52,11 @@ public class BayesServerNet : MonoBehaviour
         cFalse = new State[cNum];
         competencies = new Variable[cNum];
         competencyNodes = new Node[cNum];
+        int totalEvicenceCount = networkData.totalEvicenceCount; // ideally should be calculated instead of hard coding
+        eTrue = new State[totalEvicenceCount];
+        eFalse = new State[totalEvicenceCount];
+        evidences = new Variable[totalEvicenceCount];
+        evidenceNodes = new Node[totalEvicenceCount];
         for (int i=0; i< cNum; i++)
         {
             NetworkJSON.Competency c = networkData.competencies[i];
@@ -65,7 +69,24 @@ public class BayesServerNet : MonoBehaviour
             };
             beliefNet.Nodes.Add(competencyNodes[i]);
             beliefNet.Links.Add(new Link(rootNode, competencyNodes[i], 0));
+
+            // add evidence child nodes
+            eNum = c.evidences.Count;
+            for(int j=0; j < eNum; j++)
+            {
+                NetworkJSON.Evidence e = c.evidences[j];
+                eTrue[i + j] = new State("True");
+                eFalse[i + j] = new State("False");
+                evidences[i + j] = new Variable(e.name, eTrue[i + j], eFalse[i + j]);
+                evidenceNodes[i + j] = new Node(evidences[i + j])
+                {
+                    TemporalType = TemporalType.Temporal // this is a time series node, hence re-used for each time slice
+                };
+                beliefNet.Nodes.Add(evidenceNodes[i + j]);
+                beliefNet.Links.Add(new Link(competencyNodes[i], evidenceNodes[i + j], 0));
+            }
         }
+
         //Debug.Log(Application.persistentDataPath);
         beliefNet.Save(Application.persistentDataPath + "/temp.bayes"); // doesn't save the state of evidences
     }
