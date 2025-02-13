@@ -15,17 +15,14 @@ public class NetworkJSON
 
     public class Evidence
     {
-        public int id;
         public string name;
+        public float[] probabilities;
         public int[] parents;
-        public double guessRate;
-        public double slipRate;
     }
 
     public class Root
     {
         public string name;
-        public double transitionRate;
     }
 
     public Root root;

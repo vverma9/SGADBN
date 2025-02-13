@@ -1,6 +1,5 @@
 {
   "Root": {
-    "id": 0,
     "name": "Blood Transfusion"
   },
   "L1Competencies": [
@@ -155,13 +154,855 @@
   ],
   "Evidences": [
     {
-      "id": 0,
-      "name": "XXXX",
-      "guessRate": 0.15,
-      "slipRate": 0.15,
+      "name": "BTG1-S1-1",
+      "probabilities": [],
       "parents": [
         0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S1-2",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S1-3",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S1-15",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S1-17",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-1",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-2",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-3",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-4",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-5",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-6",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-7",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S2-8",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S3-1",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S3-2",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S3-3",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S3-4",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S3-5",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S3-6",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-9",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-10",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-11",
+      "probabilities": [],
+      "parents": [
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-12",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-13",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-14",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-15",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-16",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S6-17",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S6-18",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S6-19",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S6-20",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-21",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-22",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-23",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-24",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-25",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-26",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S6-27",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S7-1",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-2",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-3",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-4",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-5",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-6",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-7",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-8",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-9",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-10",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-11",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-12",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-13",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-14",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-15",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-16",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-17",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-18",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-19",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-20",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-21",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-22",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-23",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-24",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-25",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S7-26",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S7-27",
+      "probabilities": [],
+      "parents": [
+        0,
+        11
+      ]
+    },
+    {
+      "name": "BTG1-S7-28",
+      "probabilities": [],
+      "parents": [
+        0,
+        2,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S7-29",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S7-30",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S7-31",
+      "probabilities": [],
+      "parents": [
+        0,
+        2
+      ]
+    },
+    {
+      "name": "BTG1-S1-9",
+      "probabilities": [],
+      "parents": [
         1
+      ]
+    },
+    {
+      "name": "BTG1-S1-10",
+      "probabilities": [],
+      "parents": [
+        1
+      ]
+    },
+    {
+      "name": "BTG1-S1-11",
+      "probabilities": [],
+      "parents": [
+        1
+      ]
+    },
+    {
+      "name": "BTG1-S1-12",
+      "probabilities": [],
+      "parents": [
+        1
+      ]
+    },
+    {
+      "name": "BTG1-S1-13",
+      "probabilities": [],
+      "parents": [
+        1
+      ]
+    },
+    {
+      "name": "BTG1-S1-14",
+      "probabilities": [],
+      "parents": [
+        1
+      ]
+    },
+    {
+      "name": "BTG1-S1-16",
+      "probabilities": [],
+      "parents": [
+        1
+      ]
+    },
+    {
+      "name": "BTG1-S5-8",
+      "probabilities": [],
+      "parents": [
+        2,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S2-9",
+      "probabilities": [],
+      "parents": [
+        3
+      ]
+    },
+    {
+      "name": "BTG1-S1-5",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S1-7",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-2",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-3",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-4",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-5",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-6",
+      "probabilities": [],
+      "parents": [
+        4,
+        8
+      ]
+    },
+    {
+      "name": "BTG1-S5-7",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S6-3",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S6-4",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S6-5",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S6-6",
+      "probabilities": [],
+      "parents": [
+        4,
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S6-7",
+      "probabilities": [],
+      "parents": [
+        4,
+        8
+      ]
+    },
+    {
+      "name": "BTG1-S6-1",
+      "probabilities": [],
+      "parents": [
+        5,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S6-2",
+      "probabilities": [],
+      "parents": [
+        5,
+        6
+      ]
+    },
+    {
+      "name": "BTG1-S4-1",
+      "probabilities": [],
+      "parents": [
+        7
+      ]
+    },
+    {
+      "name": "BTG1-S1-6",
+      "probabilities": [],
+      "parents": [
+        8
+      ]
+    },
+    {
+      "name": "BTG1-S1-4",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S1-8",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-1",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-9",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-10",
+      "probabilities": [],
+      "parents": [
+        9,
+        10
+      ]
+    },
+    {
+      "name": "BTG1-S5-11",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-12",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-13",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-14",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S5-15",
+      "probabilities": [],
+      "parents": [
+        9
+      ]
+    },
+    {
+      "name": "BTG1-S6-8",
+      "probabilities": [],
+      "parents": [
+        9
       ]
     }
   ]
