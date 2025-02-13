@@ -1,56 +1,168 @@
 {
   "Root": {
-    "name": "Blood Transfusion",
-    "transitionRate": 0.4
+    "id": 0,
+    "name": "Blood Transfusion"
   },
-  "Competencies": [
+  "L1Competencies": [
     {
       "id": 0,
-      "name": "Quality",
+      "name": "COM-RN-1",
       "guessRate": 0.1,
       "slipRate": 0.05
     },
     {
       "id": 1,
-      "name": "Legal Knowledge",
+      "name": "COM-RN-2",
       "guessRate": 0.11,
       "slipRate": 0.04
     },
     {
       "id": 2,
-      "name": "Communication",
+      "name": "COM-RN-3",
       "guessRate": 0.2,
       "slipRate": 0.1
     }
   ],
-  "Evidences": [
+  "L2Competencies": [
     {
       "id": 0,
-      "name": "Check patients's wrist tag",
+      "name": "COM-RN-1.1",
       "guessRate": 0.15,
-      "slipRate": 0.15,
+      "slipRate": 0.1,
       "parent": 0
     },
     {
       "id": 1,
-      "name": "Collect Blood specimen",
+      "name": "COM-RN-2.1",
       "guessRate": 0.21,
       "slipRate": 0.45,
       "parent": 1
     },
     {
       "id": 2,
-      "name": "GXM Form",
+      "name": "COM-RN-2.2",
       "guessRate": 0.17,
       "slipRate": 0.2,
       "parent": 1
     },
     {
       "id": 3,
-      "name": "Speak to Patient: Verify patient DOB",
+      "name": "COM-RN-2.4",
+      "guessRate": 0.23,
+      "slipRate": 0.21,
+      "parent": 1
+    },
+    {
+      "id": 4,
+      "name": "COM-RN-3.2",
       "guessRate": 0.23,
       "slipRate": 0.21,
       "parent": 2
+    },
+    {
+      "id": 5,
+      "name": "COM-RN-3.3",
+      "guessRate": 0.23,
+      "slipRate": 0.21,
+      "parent": 2
+    }
+  ],
+  "L3Competencies": [
+    {
+      "id": 0,
+      "name": "COM-RN-1.1.2",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 0
+    },
+    {
+      "id": 1,
+      "name": "COM-RN-1.1.3",
+      "guessRate": 0.1,
+      "slipRate": 0.15,
+      "parent": 0
+    },
+    {
+      "id": 2,
+      "name": "COM-RN-1.1.7",
+      "guessRate": 0.15,
+      "slipRate": 0.1,
+      "parent": 0
+    },
+    {
+      "id": 3,
+      "name": "COM-RN-1.1.8",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 0
+    },
+    {
+      "id": 4,
+      "name": "COM-RN-2.1.1",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 1
+    },
+    {
+      "id": 5,
+      "name": "COM-RN-2.2.1",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 2
+    },
+    {
+      "id": 6,
+      "name": "COM-RN-2.2.3",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 2
+    },
+    {
+      "id": 7,
+      "name": "COM-RN-2.2.5",
+      "guessRate": 0.15,
+      "slipRate": 0.05,
+      "parent": 2
+    },
+    {
+      "id": 8,
+      "name": "COM-RN-2.4.3",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 3
+    },
+    {
+      "id": 9,
+      "name": "COM-RN-3.2.3",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 4
+    },
+    {
+      "id": 10,
+      "name": "COM-RN-3.3.1",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 5
+    },
+    {
+      "id": 11,
+      "name": "COM-RN-3.3.2",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parent": 5
+    }
+  ],
+  "Evidences": [
+    {
+      "id": 0,
+      "name": "XXXX",
+      "guessRate": 0.15,
+      "slipRate": 0.15,
+      "parents": [
+        0,
+        1
+      ]
     }
   ]
 }

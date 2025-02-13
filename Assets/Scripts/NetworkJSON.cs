@@ -10,13 +10,14 @@ public class NetworkJSON
         public string name;
         public double guessRate;
         public double slipRate;
+        public int parent;
     }
 
     public class Evidence
     {
         public int id;
         public string name;
-        public int parent;
+        public int[] parents;
         public double guessRate;
         public double slipRate;
     }
@@ -28,6 +29,8 @@ public class NetworkJSON
     }
 
     public Root root;
-    public List<Competency> competencies;
+    public List<Competency> l1competencies;
+    public List<Competency> l2competencies;
+    public List<Competency> l3competencies;
     public List<Evidence> evidences;
 }
